@@ -4,6 +4,7 @@ namespace Novel\FList;
 
 
 use Novel\FList\Exception\FListShouldNotBeChanged;
+use Novel\FList\Exception\HeadOfEmptyList;
 
 class FList implements \Iterator, \ArrayAccess
 {
@@ -13,13 +14,17 @@ class FList implements \Iterator, \ArrayAccess
 
     public function __construct(...$elements)
     {
-        $this->elements = $elements;
+        $this->elements = $elements ? $elements : [];
 
         $this->position = 0;
     }
 
     public function head()
     {
+        if (count($this->elements) < 1) {
+            throw new HeadOfEmptyList();
+        }
+
         return $this->elements[0];
     }
 

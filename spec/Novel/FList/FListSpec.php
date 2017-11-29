@@ -3,6 +3,7 @@
 namespace spec\Novel\FList;
 
 use Novel\FList\Exception\FListShouldNotBeChanged;
+use Novel\FList\Exception\HeadOfEmptyList;
 use Novel\FList\FList;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -25,6 +26,15 @@ class FListSpec extends ObjectBehavior
         $this->beConstructedWith(...$array);
 
         $this->head()->shouldReturn($array[0]);
+    }
+
+    function it_does_not_return_head_of_empty_list()
+    {
+        $this->beConstructedWith();
+
+        $this
+            ->shouldThrow(HeadOfEmptyList::class)
+            ->duringHead();
     }
 
     function it_has_tail()
