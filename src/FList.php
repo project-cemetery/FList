@@ -40,6 +40,11 @@ class FList implements \Iterator, \ArrayAccess
         return count($this->elements) === 0;
     }
 
+    public function prepend($element) : FList
+    {
+        return new FList($element, ...$this->elements);
+    }
+
     public function find(callable $callback)
     {
         return $this

@@ -137,4 +137,14 @@ class FListSpec extends ObjectBehavior
             ->shouldThrow(FListShouldNotBeChanged::class)
             ->duringOffsetUnset(1);
     }
+
+    function it_is_prependable()
+    {
+        $array = [1, 2, 3];
+
+        $this->beConstructedWith(...$array);
+
+        $this->prepend(0)->toArray()
+            ->shouldReturn([0, 1, 2, 3]);
+    }
 }
