@@ -56,4 +56,26 @@ class FListSpec extends ObjectBehavior
 
         $this->shouldImplement(\Iterator::class);
     }
+
+    function it_prohibits_mutation()
+    {
+        $array = [1, 2, 3, 4];
+
+        $this->beConstructedWith(...$array);
+
+        $this
+            ->shouldThrow(FListShouldNotBeChanged::class)
+            ->duringOffsetSet(1, 12);
+    }
+
+    function it_prohibits_unset()
+    {
+        $array = [1, 2, 3, 4];
+
+        $this->beConstructedWith(...$array);
+
+        $this
+            ->shouldThrow(FListShouldNotBeChanged::class)
+            ->duringOffsetUnset(1);
+    }
 }
