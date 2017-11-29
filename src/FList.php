@@ -35,6 +35,11 @@ class FList implements \Iterator, \ArrayAccess
         );
     }
 
+    public function isEmpty() : bool
+    {
+        return count($this->elements) === 0;
+    }
+
     public function find(callable $callback)
     {
         return $this

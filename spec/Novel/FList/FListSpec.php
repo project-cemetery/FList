@@ -37,6 +37,22 @@ class FListSpec extends ObjectBehavior
             ->duringHead();
     }
 
+    function it_able_to_be_empty()
+    {
+        $this->beConstructedWith();
+
+        $this->isEmpty()
+            ->shouldReturn(true);
+    }
+
+    function it_able_to_be_not_empty()
+    {
+        $this->beConstructedWith(1);
+
+        $this->isEmpty()
+            ->shouldReturn(false);
+    }
+
     function it_has_tail()
     {
         $array = [1, 2, 3, 4];
