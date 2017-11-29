@@ -18,6 +18,18 @@ class FList implements \Iterator, \ArrayAccess
         $this->position = 0;
     }
 
+    public function head()
+    {
+        return $this->elements[0];
+    }
+
+    public function tail() : FList
+    {
+        return new FList(
+            ...array_slice($this->elements, 1)
+        );
+    }
+
     public function filter(callable $callback) : FList
     {
         return new FList(

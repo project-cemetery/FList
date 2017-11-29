@@ -11,11 +11,30 @@ class FListSpec extends ObjectBehavior
 {
     function it_returns_array()
     {
-        $array = [1, 2, 3];
+        $array = [1, 2, 3, 4];
 
         $this->beConstructedWith(...$array);
 
         $this->toArray()->shouldReturn($array);
+    }
+
+    function it_has_head()
+    {
+        $array = [1, 2, 3, 4];
+
+        $this->beConstructedWith(...$array);
+
+        $this->head()->shouldReturn($array[0]);
+    }
+
+    function it_has_tail()
+    {
+        $array = [1, 2, 3, 4];
+
+        $this->beConstructedWith(...$array);
+
+        $this->tail()->toArray()
+            ->shouldReturn(array_slice($array, 1));
     }
 
     function it_is_filterable()
