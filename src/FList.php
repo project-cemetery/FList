@@ -45,6 +45,14 @@ class FList implements \Iterator, \ArrayAccess
         return new FList($element, ...$this->elements);
     }
 
+    public function append($element) : FList
+    {
+        $newElements = $this->elements;
+        $newElements[] = $element;
+
+        return new FList(...$newElements);
+    }
+
     public function find(callable $callback)
     {
         return $this

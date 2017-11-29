@@ -147,4 +147,14 @@ class FListSpec extends ObjectBehavior
         $this->prepend(0)->toArray()
             ->shouldReturn([0, 1, 2, 3]);
     }
+
+    function it_is_appendable()
+    {
+        $array = [1, 2, 3];
+
+        $this->beConstructedWith(...$array);
+
+        $this->append(4)->toArray()
+            ->shouldReturn([1, 2, 3, 4]);
+    }
 }
