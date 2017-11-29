@@ -1,0 +1,25 @@
+{
+    "name": "thenovel/flist",
+    "description": "functional list",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Igor Kamyshev",
+            "email": "garik.novel@gmail.com"
+        }
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Novel\\FList\\": "src/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpspec/phpspec": "^4.2"
+    }
+}
