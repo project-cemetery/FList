@@ -47,6 +47,20 @@ class FListSpec extends ObjectBehavior
             ->shouldReturn(array_slice($array, 1));
     }
 
+    function it_has_find()
+    {
+        $array = [1, 2, 3, 4];
+
+        $this->beConstructedWith(...$array);
+
+        $findFunction = function ($v) {
+            return $v === 3;
+        };
+
+        $this->find($findFunction)
+            ->shouldReturn(3);
+    }
+
     function it_is_filterable()
     {
         $array = [1, 2, 3, 4];

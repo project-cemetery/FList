@@ -35,6 +35,13 @@ class FList implements \Iterator, \ArrayAccess
         );
     }
 
+    public function find(callable $callback)
+    {
+        return $this
+            ->filter($callback)
+            ->head();
+    }
+
     public function filter(callable $callback) : FList
     {
         return new FList(
