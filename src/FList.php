@@ -4,7 +4,7 @@ namespace Novel\FList;
 
 
 use Novel\FList\Exception\FListShouldNotBeChanged;
-use Novel\FList\Exception\HeadOfEmptyList;
+use Novel\FList\Exception\HeadOfEmptyFList;
 
 class FList implements \Iterator, \ArrayAccess
 {
@@ -22,7 +22,7 @@ class FList implements \Iterator, \ArrayAccess
     public function head()
     {
         if (count($this->elements) < 1) {
-            throw new HeadOfEmptyList();
+            throw new HeadOfEmptyFList();
         }
 
         return $this->elements[0];

@@ -3,7 +3,7 @@
 namespace spec\Novel\FList;
 
 use Novel\FList\Exception\FListShouldNotBeChanged;
-use Novel\FList\Exception\HeadOfEmptyList;
+use Novel\FList\Exception\HeadOfEmptyFList;
 use Novel\FList\FList;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -33,7 +33,7 @@ class FListSpec extends ObjectBehavior
         $this->beConstructedWith();
 
         $this
-            ->shouldThrow(HeadOfEmptyList::class)
+            ->shouldThrow(HeadOfEmptyFList::class)
             ->duringHead();
     }
 
