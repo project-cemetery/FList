@@ -2,17 +2,13 @@
 
 namespace spec\Novel\FList;
 
+use Novel\FList\Exception\FListShouldNotBeChanged;
 use Novel\FList\FList;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class FListSpec extends ObjectBehavior
 {
-    function it_is_initializable()
-    {
-        $this->shouldHaveType(FList::class);
-    }
-
     function it_returns_array()
     {
         $array = [1, 2, 3];

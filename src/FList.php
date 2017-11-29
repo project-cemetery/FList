@@ -3,7 +3,9 @@
 namespace Novel\FList;
 
 
-class FList implements \Iterator
+use Novel\FList\Exception\FListShouldNotBeChanged;
+
+class FList implements \Iterator, \ArrayAccess
 {
     private $elements;
 
@@ -35,6 +37,8 @@ class FList implements \Iterator
         return $this->elements;
     }
 
+    // Iterator Interface
+
     public function current()
     {
         return $this->elements[$this->position];
@@ -58,5 +62,27 @@ class FList implements \Iterator
     public function rewind()
     {
         $this->position = 0;
+    }
+
+    // ArrayAccess Interface
+
+    public function offsetExists($offset)
+    {
+        return isset($this->elements[$offset]);
+    }
+
+    public function offsetGet($offset)
+    {
+        return isset($this->elements[$offset]) ? $this->elements[$offset] : null;
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        throw new FListShouldNotBeChanged();
+    }
+
+    public function offsetUnset($offset)
+    {
+        throw new FListShouldNotBeChanged();
     }
 }
