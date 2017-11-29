@@ -51,4 +51,13 @@ class FListSpec extends ObjectBehavior
             ->map($mapFunction)->toArray()
             ->shouldReturn(array_map($mapFunction, $array));
     }
+
+    function it_is_iterable()
+    {
+        $array = [1, 2, 3, 4];
+
+        $this->beConstructedWith(...$array);
+
+        $this->shouldImplement(\Iterator::class);
+    }
 }
